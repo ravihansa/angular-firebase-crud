@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from './../../../shared/employee.service';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from './../../../shared/employee.service';
 
 @Component({
   selector: 'app-employee',

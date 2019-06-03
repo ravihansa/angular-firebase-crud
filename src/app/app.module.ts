@@ -1,31 +1,38 @@
-import { BrowserModule } from '@angular/platform-browser';
+// modules...
 import { NgModule } from '@angular/core';
+import { ToastrModule } from 'ngx-toastr';
+import { FormsModule} from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// components...
 import { AppComponent } from './app.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeeComponent } from './components/employees/employee/employee.component';
 import { EmployeeListComponent } from './components/employees/employee-list/employee-list.component';
-import { FormsModule} from '@angular/forms';
-import { ToastrModule } from 'ngx-toastr';
+
+import { APP_BASE_HREF } from '@angular/common';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeesComponent,
     EmployeeComponent,
+    EmployeesComponent,
     EmployeeListComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
     AngularFireDatabaseModule,
-    FormsModule,
-    ToastrModule.forRoot()
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue: '/my/app/components'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
